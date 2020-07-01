@@ -151,7 +151,9 @@
                   <li data-target="#carousel-slider" data-slide-to="1"></li>
                   <li data-target="#carousel-slider" data-slide-to="2"></li>
                 </ol>
+
                 <div class="carousel-inner" role="listbox">
+
                   <div class="carousel-item active">
                     <img src="{{ asset('frontend/img/slider/bg-1.jpg') }}" alt="">
                     <div class="carousel-caption">
@@ -161,6 +163,7 @@
                       <a href="#" class="btn btn-lg btn-border animated fadeInUp">Learn More</a>
                     </div>
                   </div>
+                  
                   <div class="carousel-item">
                     <img src="{{ asset('frontend/img/slider/bg-2.jpg') }}" alt="">
                     <div class="carousel-caption">
@@ -179,6 +182,7 @@
                     </div>
                   </div>
                 </div>
+
                 <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
                   <i class="fa fa-chevron-left"></i>
                 </a>
@@ -191,6 +195,7 @@
         </div>
       </div>
       <!-- End sliders -->
+
 
     </header>
     <!-- Header Area wrapper End -->

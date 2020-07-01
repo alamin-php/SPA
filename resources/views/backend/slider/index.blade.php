@@ -40,25 +40,33 @@
                 <thead>
                     <tr>
                         <th>Serial</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
+                        <th>Title</th>
+                        <th>Intro</th>
+                        <th>Button Text</th>
+                        <th>Button Class</th>
+                        <th>Status</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>
-                            <a role="button" href="#" class="btn btn-default btn-sm"><i class="fa fa-edit text-info"></i> Edit</a>
-                            <a role="button" href="#" class="btn btn-default btn-sm"><i class="fa fa-trash text-danger"></i> Delete</a>
-                        </td>
-                    </tr>
+                    @foreach ($sliders as $key => $data)
+                        <tr>
+                            <td>{{ ++$key }}</td>
+                            <td>{{ $data->title }}</td>
+                            <td>{{ Str::limit( $data->intro, 40, ' ...') }}</td>
+                            <td>{{ $data->btn_text }}</td>
+                            <td>{{ $data->btn_class }}</td>
+                            <td>{{ $data->status }}</td>
+                            <td>{{ $data->created_at }}</td>
+                            <td>{{ $data->updated_at }}</td>
+                            <td>
+                                <a role="button" href="{{ route('slider.edit', $data->id) }}" class="btn btn-default btn-sm"><i class="fa fa-edit text-info"></i> Edit</a>
+                                <a role="button" href="{{ route('slider.delete', $data->id) }}" class="btn btn-default btn-sm"><i class="fa fa-trash text-danger"></i> Delete</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -89,4 +97,10 @@
     });
   });
 </script>
+    <script>
+        var loadFile = function (event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
 @endpush

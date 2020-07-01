@@ -25,14 +25,14 @@
                         data-accordion="false">
 
                         <li class="nav-item">
-                            <a href="{{ route('dashboard') }}" class="nav-link">
+                            <a href="{{ route('dashboard') }}" class="nav-link {{Request::is('dashboard*') ? 'active' : ''}}">
                                 <i class="fas fa-tachometer-alt nav-icon"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('slider') }}" class="nav-link {{Request::is('slider*') ? 'active' : ''}}">
                                 <i class="nav-icon fas fa-image"></i>
                                 <p>
                                     Slider
@@ -41,7 +41,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('about') }}" class="nav-link {{Request::is('about*') ? 'active' : ''}}">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     About

@@ -11,12 +11,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Slider</h1>
+                <h1>About</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Slider</li>
+                    <li class="breadcrumb-item active">About</li>
                 </ol>
             </div>
         </div>
@@ -28,7 +28,7 @@
 <section class="content">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Slider Lists</h3>
+            <h3 class="card-title">About Lists</h3>
             {{-- <a role="button" href="#" class="btn btn-default float-right"><i class="fa fa-plus"></i> Add New</a> --}}
             <button type="button" class="btn btn-default float-right" data-toggle="modal" data-target="#modal-lg">
                   <i class="fa fa-plus"></i> Add New
