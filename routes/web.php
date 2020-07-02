@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 // Frontend Routes 
 Route::get('/', 'FrontendController@index');
+Route::post('/message', 'FrontendController@sendMessage')->name('message');
 
 Auth::routes();
 Route::get('/user/logout', 'UserController@logout')->name('user.logout');

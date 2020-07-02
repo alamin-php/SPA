@@ -26,7 +26,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/extras.css') }}">
     <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}">
-
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
   </head>
   <body>
 
@@ -138,7 +138,8 @@
 
       </nav>
       <!-- Navbar End -->
-@php
+@if (count($sliders) !=0)
+    @php
     $count = 0;
 @endphp
       <!-- sliders -->
@@ -183,6 +184,10 @@
         </div>
       </div>
       <!-- End sliders -->
+@else
+    <div id="sliders">
+    </div>
+@endif
 
 
     </header>
@@ -884,31 +889,32 @@
         <div class="row">
           <div class="col-lg-8 col-md-6 col-xs-12">
             <h3 class="title-head text-left">Get in touch</h3>
-            <form class="contact-form" data-toggle="validator">
+            <form class="contact-form" data-toggle="validator" action="{{ route('message') }}" method="POST">
+              @csrf
               <div class="row">
                 <div class="col-lg-4 col-md-12 col-xs-12">
                   <div class="form-group">
                     <i class="contact-icon fa fa-user"></i>
-                    <input type="text" class="form-control" id="name" placeholder="Full Name" required data-error="Please enter your name">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required data-error="Please enter your name">
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-xs-12">
                   <div class="form-group">
                     <i class="contact-icon fa fa-envelope-o"></i>
-                    <input type="email" class="form-control" id="email" placeholder="Email" required data-error="Please enter your email">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required data-error="Please enter your email">
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-xs-12">
                   <div class="form-group">
                     <i class="contact-icon fa fa-pencil-square-o"></i>
-                    <input type="text" class="form-control" id="subject" placeholder="Subject" required data-error="Please enter your Subject">
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required data-error="Please enter your Subject">
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-xs-12">
-                  <textarea class="form-control" id="message" rows="4" placeholder="Message" required data-error="Please enter your message"></textarea>
+                  <textarea class="form-control" id="message" rows="4" name="intro" placeholder="Message" required data-error="Please enter your message"></textarea>
                   <div class="help-block with-errors"></div>
                   <button type="submit" id="form-submit" class="btn btn-common btn-form-submit">Send Message</button>
                   <div id="msgSubmit" class="h3 text-center hidden"></div>
@@ -1086,6 +1092,7 @@
     <script src="{{ asset('frontend/js/form-validator.min.js') }}"></script>
     <script src="{{ asset('frontend/js/contact-form-script.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
-      
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
   </body>
 </html>
