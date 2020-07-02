@@ -16,11 +16,11 @@
                         <label for="InputTitle">Title</label>
                         <input type="text" name="title" class="form-control" id="InputTitle" placeholder="Enter Title">
                     </div>
-                    <div class="form-group">
-                        <label for="InputIntro">intro</label>
-                        <input type="text" name="intro" class="form-control" id="InputIntro"
-                            placeholder="Enter Details">
-                    </div>
+                        <div class="form-group">
+                            <label for="InputIntro">intro</label>
+                            <textarea type="text" name="intro" class="form-control"
+                                id="InputIntro"></textarea>
+                        </div>
                     <div class="form-group">
                         <label for="InputBtnText">Button Text</label>
                         <input type="text" name="btn_text" class="form-control" id="InputBtnText"

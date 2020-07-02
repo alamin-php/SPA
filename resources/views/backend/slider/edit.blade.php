@@ -14,7 +14,8 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Slider</li>
+                    <li class="breadcrumb-item"><a href="{{ route('slider') }}">Slider</a></li>
+                    <li class="breadcrumb-item active">Edit</li>
                 </ol>
             </div>
         </div>
@@ -106,7 +107,12 @@
                     <h5 class="text-default">Slider Info</h5>
                 </div>
                 <div class="card-body">
-                    <p class="text-info"><i><i class="fas fa-clock"> </i> Last Updated: {{ $slider->updated_at }}</i></p>
+                    @if ($slider->updated_at)
+                        <p class="text-info"><i><i class="fas fa-clock"> </i> Last Updated: {{ $slider->updated_at }}</i></p>
+                        @else
+                        <p class="text-danger"><i><i class="fas fa-clock"> </i> Last Updated: Not Update Yet!</i></p>
+                        
+                    @endif
                     <p class="text-info"><i><i class="fas fa-users"> </i> Last Status: {{ $slider->status == 'on' ? 'Published' : 'Unpublish' }}</i></p>
                 </div>
             </div>

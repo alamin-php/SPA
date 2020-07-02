@@ -4,6 +4,7 @@
       <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 @endpush
 @section('content')
 <!-- Content Header (Page header) -->
@@ -46,7 +47,6 @@
                         <th>Button Class</th>
                         <th>Status</th>
                         <th>Created At</th>
-                        <th>Updated At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -60,8 +60,8 @@
                             <td>{{ $data->btn_class }}</td>
                             <td>{{ $data->status }}</td>
                             <td>{{ $data->created_at }}</td>
-                            <td>{{ $data->updated_at }}</td>
                             <td>
+                                <a role="button" href="{{ route('slider.show', $data->id) }}" class="btn btn-default btn-sm"><i class="fa fa-eye text-success"></i> Show</a>
                                 <a role="button" href="{{ route('slider.edit', $data->id) }}" class="btn btn-default btn-sm"><i class="fa fa-edit text-info"></i> Edit</a>
                                 <a role="button" href="{{ route('slider.delete', $data->id) }}" class="btn btn-default btn-sm"><i class="fa fa-trash text-danger"></i> Delete</a>
                             </td>
@@ -102,5 +102,8 @@
             var image = document.getElementById('output');
             image.src = URL.createObjectURL(event.target.files[0]);
         }
+    </script>
+        <script>
+        CKEDITOR.replace('intro');
     </script>
 @endpush

@@ -16,7 +16,7 @@ Route::get('/slider', 'SliderController@index')->name('slider');
 Route::post('/slider/add', 'SliderController@add')->name('slider.add');
 Route::get('/slider/edit/{id}', 'SliderController@edit')->name('slider.edit');
 Route::post('/slider/update/{id}', 'SliderController@update')->name('slider.update');
-Route::get('/slider/view/{id}', 'SliderController@view')->name('slider.view');
+Route::get('/slider/show/{id}', 'SliderController@show')->name('slider.show');
 Route::get('/slider/delete{id}', 'SliderController@delete')->name('slider.delete');
 
 // About Routes

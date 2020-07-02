@@ -106,7 +106,8 @@ class SliderController extends Controller
                 }
         }
         public function show($id){
-
+                $show = DB::table('sliders')->where('id', $id)->first();
+                return view('backend.slider.show', ['show' => $show]);
                 
         }
         public function delete($id){
