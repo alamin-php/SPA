@@ -138,7 +138,9 @@
 
       </nav>
       <!-- Navbar End -->
-
+@php
+    $count = 0;
+@endphp
       <!-- sliders -->
       <div id="sliders">
         <div class="full-width">
@@ -147,40 +149,26 @@
             <div id="carousel-area">
               <div id="carousel-slider" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                  <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel-slider" data-slide-to="1"></li>
-                  <li data-target="#carousel-slider" data-slide-to="2"></li>
+                  @foreach ($sliders as $key => $item)
+                  <li data-target="#carousel-slider" data-slide-to="{{ $key }}" class="{{ $count == 0 ? 'active' : '' }}"></li>
+                  @endforeach
                 </ol>
 
                 <div class="carousel-inner" role="listbox">
 
-                  <div class="carousel-item active">
-                    <img src="{{ asset('frontend/img/slider/bg-1.jpg') }}" alt="">
-                    <div class="carousel-caption">
-                      <h3 class="slide-title animated fadeInDown"><span>Helium</span> - Bootstrap 4 UI Kit</h3>
-                      <h5 class="slide-text animated fadeIn">Lorem ipsum dolor sit amet, consectetuer adipiscing elit<br> Curabitur ultricies nisi Nam eget dui. Etiam rhoncus</h5>
-                      <a href="#" class="btn btn-lg btn-common animated fadeInUp">Get Started</a>
-                      <a href="#" class="btn btn-lg btn-border animated fadeInUp">Learn More</a>
+                  @foreach ($sliders as $slider)
+                    <div class="carousel-item {{ $count == 0 ? 'active' : '' }}">
+                      <img src="{{ asset($slider->image) }}" alt="">
+                      <div class="carousel-caption">
+                        <h3 class="slide-title animated fadeInDown">{{ $slider->title }}</h3>
+                        <h5 class="slide-text animated fadeIn">{!! $slider->intro !!}</h5>
+                        <a href="#" class="btn btn-lg btn-{{ $slider->btn_class }} animated fadeInUp">{{ $slider->btn_text }}</a>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <div class="carousel-item">
-                    <img src="{{ asset('frontend/img/slider/bg-2.jpg') }}" alt="">
-                    <div class="carousel-caption">
-                      <h3 class="slide-title animated fadeInDown"><span>Cutting-edge</span> Features</h3>
-                      <h5 class="slide-text animated fadeIn">Lorem ipsum dolor sit amet, consectetuer adipiscing elit<br> Curabitur ultricies nisi Nam eget dui. Etiam rhoncus</h5>
-                      <a href="#" class="btn btn-lg btn-common animated fadeInUp">Download Now</a>
-                    </div>
-                  </div>
-                  <div class="carousel-item">
-                    <img src="{{ asset('frontend/img/slider/bg-3.jpg') }}" alt="">
-                    <div class="carousel-caption">
-                      <h3 class="slide-title animated fadeInDown"><span>100+</span> UI Blocks & Components</h3>
-                      <h5 class="slide-text animated fadeIn">Lorem ipsum dolor sit amet, consectetuer adipiscing elit<br> Curabitur ultricies nisi Nam eget dui. Etiam rhoncus</h5>
-                      <a href="#" class="btn btn-lg btn-border animated fadeInUp">Get Started</a>
-                      <a href="#" class="btn btn-lg btn-common animated fadeInUp">Download</a>
-                    </div>
-                  </div>
+                    @php
+                        $count ++
+                    @endphp
+                  @endforeach
                 </div>
 
                 <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
