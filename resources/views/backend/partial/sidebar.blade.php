@@ -95,7 +95,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('contact') }}" class="nav-link {{Request::is('contact*') ? 'active' : ''}}">
                                 <i class="nav-icon fas fa-envelope"></i>
                                 <p>
                                     Contact
@@ -105,7 +105,7 @@
 
                         <li class="nav-header">SETTINGS</li>
                         <li class="nav-item">
-                            <a href="../calendar.html" class="nav-link">
+                            <a href="{{ route('setting') }}" class="nav-link">
                                 <i class="nav-icon fas fa-globe"></i>
                                 <p>
                                     Site Settings

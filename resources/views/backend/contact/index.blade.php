@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','All Slider')
+@section('title','Message')
 @push('css')
       <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -11,12 +11,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Slider</h1>
+                <h1>Message</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Slider</li>
+                    <li class="breadcrumb-item active">Message</li>
                 </ol>
             </div>
         </div>
@@ -28,11 +28,7 @@
 <section class="content">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Slider Lists</h3>
-            {{-- <a role="button" href="#" class="btn btn-default float-right"><i class="fa fa-plus"></i> Add New</a> --}}
-            <button type="button" class="btn btn-default float-right" data-toggle="modal" data-target="#modal-lg">
-                  <i class="fa fa-plus"></i> Add New
-                </button>
+            <h3 class="card-title">Messages</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -40,31 +36,35 @@
                 <thead>
                     <tr>
                         <th>Serial</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
+                        <th>Name</th>
+                        <th>E-Mail</th>
+                        <th>Subject</th>
+                        <th>Intro</th>
+                        <th>Status</th>
+                        <th>Send At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>
-                            <a role="button" href="#" class="btn btn-default btn-sm"><i class="fa fa-edit text-info"></i> Edit</a>
-                            <a role="button" href="#" class="btn btn-default btn-sm"><i class="fa fa-trash text-danger"></i> Delete</a>
-                        </td>
-                    </tr>
+                    @foreach ($messages as $key => $data)
+                        <tr>
+                            <td>{{ ++$key }}</td>
+                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->email }}</td>
+                            <td>{{ $data->subject }}</td>
+                            <td>{{ Str::limit( $data->intro, 40, ' ...') }}</td>
+                            <td>{{ $data->status == "0"?"Unread":"Read" }}</td>
+                            <td>{{ $data->created_at }}</td>
+                            <td>
+                                <a role="button" href="{{ route('contact.read', $data->id) }}" class="btn btn-default btn-sm"><i class="fa fa-book text-success"></i> Read</a>
+                                <a role="button" href="{{ route('contact.delete', $data->id) }}" class="btn btn-default btn-sm"><i class="fa fa-trash text-danger"></i> Delete</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
         <!-- /.card-body -->
-        @include('backend.slider.create')
-
     </div>
 </section>
 <!-- /.content -->

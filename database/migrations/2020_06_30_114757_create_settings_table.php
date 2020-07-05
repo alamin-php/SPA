@@ -15,6 +15,15 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('image')->nullable();
+            $table->longText('address')->nullable();
+            $table->string('phone1')->nullable();
+            $table->string('phone2')->nullable();
+            $table->string('website')->nullable();
+            $table->string('fblink')->nullable();
+            $table->string('twlink')->nullable();
+            $table->string('instlink')->nullable();
+            $table->string('lilink')->nullable();
             $table->timestamps();
         });
     }

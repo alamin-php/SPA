@@ -27,3 +27,22 @@ Route::get('/about/edit/{id}', 'AboutController@edit')->name('about.edit');
 Route::post('/about/update/{id}', 'AboutController@update')->name('about.update');
 Route::get('/about/view/{id}', 'AboutController@view')->name('about.view');
 Route::get('/about/delete{id}', 'AboutController@delete')->name('about.delete');
+
+// Contacts Routes
+Route::get('/contact', 'ContactController@index')->name('contact');
+Route::get('/contact/read/{id}', 'ContactController@read')->name('contact.read');
+Route::get('/contact/delete{id}', 'ContactController@delete')->name('contact.delete');
+// Route::post('/about/add', 'AboutController@add')->name('about.add');
+// Route::get('/about/edit/{id}', 'AboutController@edit')->name('about.edit');
+// Route::post('/about/update/{id}', 'AboutController@update')->name('about.update');
+// Route::get('/about/view/{id}', 'AboutController@view')->name('about.view');
+
+// Setting Routes
+Route::get('/setting', 'SettingController@index')->name('setting');
+Route::post('/setting/udate', 'SettingController@update')->name('setting.update');
+// Route::get('/contact/read/{id}', 'ContactController@read')->name('contact.read');
+// Route::get('/contact/delete{id}', 'ContactController@delete')->name('contact.delete');
+// Route::post('/about/add', 'AboutController@add')->name('about.add');
+// Route::get('/about/edit/{id}', 'AboutController@edit')->name('about.edit');
+// Route::get('/about/view/{id}', 'AboutController@view')->name('about.view');
+

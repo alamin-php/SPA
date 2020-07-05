@@ -43,7 +43,7 @@
               <span class="icon-menu"></span>
               <span class="icon-menu"></span>
             </button>
-            <a href="index.html" class="navbar-brand"><img src="{{ asset('frontend/img/logo.png') }}" alt=""></a>
+            <a href="{{ url('/') }}" class="navbar-brand"><img src="{{ asset($setting->image) }}" alt=""></a>
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="navbar-nav mr-auto w-100 justify-content-end clearfix">
@@ -929,26 +929,26 @@
             <div class="contact-info">
               <address>
               <i class="lni-map-marker icons cyan-color contact-info-icon"></i>
-              Level 13, 2 Elizabeth St, Melbourne,
+              {{ $setting->address }}
             </address>
               <div class="tel-info">
-                <a href="tel:1800452308"><i class="lni-mobile icons cyan-color contact-info-icon"></i>1800 452 308</a>
-                <a href="tel:+61(8)82343555"><i class="lni-phone icons cyan-color contact-info-icon"></i>+61 (8) 8234 3555</a>
+                <a href="tel:1800452308"><i class="lni-mobile icons cyan-color contact-info-icon"></i>{{ $setting->phone1 }}</a>
+                <a href="tel:+61(8)82343555"><i class="lni-phone icons cyan-color contact-info-icon"></i>{{ $setting->phone2 }}</a>
               </div>
               <a href="mailto:hello@spiritapp.com"><i class="lni-envelope icons cyan-color contact-info-icon"></i>admin@uideck.com</a>
-              <a href="#"><i class="lni-tab icons cyan-color contact-info-icon"></i>www.uideck.com</a>
+              <a href="{{ $setting->website }}" target="_blank"><i class="lni-tab icons cyan-color contact-info-icon"></i>www.amsoftit.com</a>
               <ul class="social-links">
                 <li>
-                  <a href="#" class="fa fa-facebook"></a>
+                  <a href="{{ $setting->fblink }}" class="fa fa-facebook"></a>
                 </li>
                 <li>
-                  <a href="#" class="fa fa-twitter"></a>
+                  <a href="{{ $setting->twlink }}" class="fa fa-twitter"></a>
                 </li>
                 <li>
-                  <a href="#" class="fa fa-instagram"></a>
+                  <a href="{{ $setting->instlink }}" class="fa fa-instagram"></a>
                 </li>
                 <li>
-                  <a href="#" class="fa fa-linkedin"></a>
+                  <a href="{{ $setting->lilink }}" class="fa fa-linkedin"></a>
                 </li>
               </ul>
             </div>

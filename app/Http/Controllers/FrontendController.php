@@ -12,11 +12,28 @@ class FrontendController extends Controller
 
     public function index(){
         $sliders = DB::table('sliders')->where('status', 'on')->get();
-        return view('frontend.index',['sliders' => $sliders]);
+        $setting = DB::table('settings')->where('id', '1')->first();
+        return view('frontend.index',['sliders' => $sliders,'setting' => $setting,]);
     }
 
     public function sendMessage(Request $request){
-        Toastr::warning('Your Message Send to Successfully.', 'Thank You');
-        return redirect()->back();
+
+        $data = array();
+         date_default_timezone_set('Asia/Dhaka');
+        $data['name'] = $request->name;
+        $data['email'] = $request->email;
+        $data['subject'] = $request->subject;
+        $data['intro'] = $request->intro;
+        $data['status'] = "0";
+        $data['created_at'] = date('Y-m-d h:i:s');
+        $send = DB::table('contacts')->insert($data);
+        if ($send) {
+            Toastr::warning('Your Message Send to Successfully.', 'Thank You');
+            return redirect()->back();
+        } else {
+            Toastr::danger('Somthig error here.', 'Send Error');
+           return redirect()->back();
+        }
+        
     }
 }
