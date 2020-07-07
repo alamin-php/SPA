@@ -13,7 +13,17 @@ class FrontendController extends Controller
     public function index(){
         $sliders = DB::table('sliders')->where('status', 'on')->get();
         $setting = DB::table('settings')->where('id', '1')->first();
-        return view('frontend.index',['sliders' => $sliders,'setting' => $setting,]);
+
+        $abouts = DB::table('abouts')->where('status', 'on')
+        ->limit(4)
+        ->orderBy('aid', 'DESC')
+        ->get();
+        
+        return view('frontend.index',[
+            'sliders' => $sliders,
+            'setting' => $setting,
+            'abouts' => $abouts]
+        );
     }
 
     public function sendMessage(Request $request){

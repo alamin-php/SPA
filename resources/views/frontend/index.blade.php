@@ -197,34 +197,16 @@
     <div id="about" class="section-padding">
       <div class="container">
         <div class="row">
+          @foreach ($abouts as $data)
           <div class="col-lg-3 col-md-6 col-xs-12">
             <div class="about block text-center">
-              <img src="{{ asset('frontend/img/about/img1.png') }}" alt="">
-              <h5><a href="#">About Title</a></h5>
-              <p>Quisque sit amet libero purus. Nulla a dignissim quam. In hac habitasse platea dictumst.</p>
+              <img src="{{ asset($data->image) }}" alt="">
+              <h5><a href="#">{{ $data->title }}</a></h5>
+              <p>{!! Str::limit( $data->intro, 120, ' :)') !!}</p>
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="about block text-center">
-              <img src="{{ asset('frontend/img/about/img2.png') }}" alt="">
-              <h5><a href="#">About Title</a></h5>
-              <p>Quisque sit amet libero purus. Nulla a dignissim quam. In hac habitasse platea dictumst.</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="about block text-center">
-              <img src="{{ asset('frontend/img/about/img3.png') }}" alt="">
-              <h5><a href="#">About Title</a></h5>
-              <p>Quisque sit amet libero purus. Nulla a dignissim quam. In hac habitasse platea dictumst.</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-xs-12">
-            <div class="about block text-center">
-              <img src="{{ asset('frontend/img/about/img4.png') }}" alt="">
-              <h5><a href="#">About Title</a></h5>
-              <p>Quisque sit amet libero purus. Nulla a dignissim quam. In hac habitasse platea dictumst.</p>
-            </div>
-          </div>
+              
+          @endforeach
         </div>
       </div>
     </div>
