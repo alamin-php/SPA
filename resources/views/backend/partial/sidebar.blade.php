@@ -50,7 +50,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('service') }}" class="nav-link" class="nav-link {{Request::is('service*') ? 'active' : ''}}">
                                 <i class="nav-icon fas fa-tools"></i>
                                 <p>
                                     Service

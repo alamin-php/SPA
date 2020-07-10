@@ -18,11 +18,17 @@ class FrontendController extends Controller
         ->limit(4)
         ->orderBy('aid', 'DESC')
         ->get();
+
+        $services = DB::table('services')->where('status', 'on')
+        ->orderBy('id', 'DESC')
+        ->get();
         
         return view('frontend.index',[
             'sliders' => $sliders,
             'setting' => $setting,
-            'abouts' => $abouts]
+            'abouts' => $abouts,
+            'services' => $services
+            ]
         );
     }
 

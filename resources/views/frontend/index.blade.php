@@ -87,6 +87,22 @@
                   Contact
                 </a>
               </li>
+              
+              @if (Route::has('login'))
+                @auth
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('dashboard') }}">
+                  Dashboard
+                  </a>
+                </li>
+                @else
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ route('login') }}">
+                  Login
+                  </a>
+                </li>
+                @endauth
+              @endif
             </ul>
           </div>
         </div>
@@ -221,23 +237,43 @@
           </div>
         </div>
         <div class="row">
-          <!-- Start Service Icon 1 -->
-          <div class="col-md-6 col-lg-4 col-xs-12">
-            <div class="service-box">
-              <div class="service-icon">
-                <i class="fa fa-cogs"></i>
-              </div>
-              <div class="service-content">
-                <h4><a href="#">Easy to Customize</a></h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto officiis consequuntur vero error excepturi.
-                </p>
+@if (count($services) > 0)
+              @foreach ($services as $service)
+            <!-- Start Service Icon 1 -->
+            <div class="col-md-6 col-lg-4 col-xs-12">
+              <div class="service-box">
+                <div class="service-icon">
+                  <i class="fa fa-{{ $service->icon }}"></i>
+                </div>
+                <div class="service-content">
+                  <h4><a href="#">{{ $service->title }}</a></h4>
+                  <p>
+                    {!! $service->intro !!}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-          <!-- End Service Icon 1 -->
+            <!-- End Service Icon 1 -->
+          @endforeach
+@else
 
-          <!-- Start Service Icon 2 -->
+            <!-- Start Service Icon 1 -->
+            <div class="col-md-12 col-lg-6 col-xs-12">
+              <div class="service-box">
+                <div class="service-content">
+                  <h4><a href="#">Query Not Found</a></h4>
+              </div>
+            </div>
+            <!-- End Service Icon 1 -->
+
+@endif
+          
+
+
+
+
+
+          {{-- <!-- Start Service Icon 2 -->
           <div class="col-md-6 col-lg-4 col-xs-12">
             <div class="service-box">
               <div class="service-icon">
@@ -314,7 +350,7 @@
                 </p>
               </div>
             </div>
-          </div>
+          </div> --}}
           <!-- End Service Icon 6 -->
         </div>
       </div>

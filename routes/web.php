@@ -28,6 +28,15 @@ Route::get('/about/edit/{id}', 'AboutController@edit')->name('about.edit');
 Route::post('/about/update/{id}', 'CrudController@updateData')->name('about.update');
 Route::get('/about/delete{id}', 'AboutController@delete')->name('about.delete');
 
+// Service Routes
+// Route::get('/about', 'AboutController@index')->name('about');
+Route::get('/service', 'ServiceController@index')->name('service');
+Route::get('/service/create', 'ServiceController@create')->name('service.create');
+Route::post('/service/add', 'CrudController@insertData')->name('service.add');
+Route::get('/service/edit/{id}', 'ServiceController@edit')->name('service.edit');
+Route::post('/service/update/{id}', 'CrudController@updateData')->name('service.update');
+Route::get('/service/delete{id}', 'ServiceController@delete')->name('service.delete');
+
 
 // Contacts Routes
 Route::get('/contact', 'ContactController@index')->name('contact');

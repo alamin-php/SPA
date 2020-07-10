@@ -30,10 +30,6 @@
     <div class="card">
         <div class="card-header">
             <h3 class="card-title">Slider Lists</h3>
-            {{-- <a role="button" href="#" class="btn btn-default float-right"><i class="fa fa-plus"></i> Add New</a> --}}
-            <button type="button" class="btn btn-default float-right" data-toggle="modal" data-target="#modal-lg">
-                  <i class="fa fa-plus"></i> Add New
-                </button>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -42,28 +38,25 @@
                     <tr>
                         <th>Serial</th>
                         <th>Title</th>
+                        <th>Icon</th>
                         <th>Intro</th>
-                        <th>Button Text</th>
-                        <th>Button Class</th>
                         <th>Status</th>
                         <th>Created At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($sliders as $key => $data)
+                    @foreach ($data as $key => $service)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $data->title }}</td>
-                            <td>{{ Str::limit( $data->intro, 40, ' ...') }}</td>
-                            <td>{{ $data->btn_text }}</td>
-                            <td>{{ $data->btn_class }}</td>
-                            <td>{{ $data->status }}</td>
-                            <td>{{ $data->created_at }}</td>
+                            <td>{{ $service->title }}</td>
+                            <td>{{ $service->icon }}</td>
+                            <td>{{ Str::limit( $service->intro, 40, ' ...') }}</td>
+                            <td>{{ $service->status }}</td>
+                            <td>{{ $service->created_at }}</td>
                             <td>
-                                <a role="button" href="{{ route('slider.show', $data->id) }}" class="btn btn-default btn-sm"><i class="fa fa-eye text-success"></i> Show</a>
-                                <a role="button" href="{{ route('slider.edit', $data->id) }}" class="btn btn-default btn-sm"><i class="fa fa-edit text-info"></i> Edit</a>
-                                <a role="button" href="{{ route('slider.delete', $data->id) }}" class="btn btn-default btn-sm"><i class="fa fa-trash text-danger"></i> Delete</a>
+                                <a role="button" href="" class="btn btn-default btn-sm"><i class="fa fa-edit text-info"></i> Edit</a>
+                                <a role="button" href="{{ route('service.delete', $service->id) }}" class="btn btn-default btn-sm"><i class="fa fa-trash text-danger"></i> Delete</a>
                             </td>
                         </tr>
                     @endforeach
@@ -71,7 +64,6 @@
             </table>
         </div>
         <!-- /.card-body -->
-        @include('backend.slider.create')
 
     </div>
 </section>
@@ -97,12 +89,6 @@
     });
   });
 </script>
-    <script>
-        var loadFile = function (event) {
-            var image = document.getElementById('output');
-            image.src = URL.createObjectURL(event.target.files[0]);
-        }
-    </script>
         <script>
         CKEDITOR.replace('intro');
     </script>

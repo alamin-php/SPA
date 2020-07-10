@@ -1,9 +1,10 @@
 @extends('layouts.app')
-@section('title','All Slider')
+@section('title','All Service')
 @push('css')
       <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 @endpush
 @section('content')
 <!-- Content Header (Page header) -->
@@ -11,12 +12,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Slider</h1>
+                <h1>Service</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                    <li class="breadcrumb-item active">Slider</li>
+                    <li class="breadcrumb-item active">Service</li>
                 </ol>
             </div>
         </div>
@@ -28,11 +29,8 @@
 <section class="content">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Slider Lists</h3>
-            {{-- <a role="button" href="#" class="btn btn-default float-right"><i class="fa fa-plus"></i> Add New</a> --}}
-            <button type="button" class="btn btn-default float-right" data-toggle="modal" data-target="#modal-lg">
-                  <i class="fa fa-plus"></i> Add New
-                </button>
+            <a href="{{ route('service.create') }}" type="button" class="btn btn-default btn-sm float-right"><i class="fas fa-plus"></i> Add New</a>
+            <h3 class="card-title">View All Service</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -40,30 +38,33 @@
                 <thead>
                     <tr>
                         <th>Serial</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
+                        <th>Title</th>
+                        <th>Icon</th>
+                        <th>Intro</th>
+                        <th>Status</th>
+                        <th>Created At</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td> 4</td>
-                        <td>
-                            <a role="button" href="#" class="btn btn-default btn-sm"><i class="fa fa-edit text-info"></i> Edit</a>
-                            <a role="button" href="#" class="btn btn-default btn-sm"><i class="fa fa-trash text-danger"></i> Delete</a>
-                        </td>
-                    </tr>
+                    @foreach ($data as $key => $service)
+                        <tr>
+                            <td>{{ ++$key }}</td>
+                            <td>{{ $service->title }}</td>
+                            <td>{{ $service->icon }}</td>
+                            <td>{!! Str::limit( $service->intro, 40, ' ...') !!}</td>
+                            <td>{{ $service->status }}</td>
+                            <td>{{ $service->created_at }}</td>
+                            <td>
+                                <a role="button" href="{{ route('service.edit', $service->id) }}" class="btn btn-default btn-sm"><i class="fa fa-edit text-info"></i> Edit</a>
+                                <a role="button" href="{{ route('service.delete', $service->id) }}" class="btn btn-default btn-sm"><i class="fa fa-trash text-danger"></i> Delete</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
         <!-- /.card-body -->
-        @include('backend.slider.create')
 
     </div>
 </section>
@@ -89,4 +90,13 @@
     });
   });
 </script>
+    <script>
+        var loadFile = function (event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
+    </script>
+        <script>
+        CKEDITOR.replace('intro');
+    </script>
 @endpush
